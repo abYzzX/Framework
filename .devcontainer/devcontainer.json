@@ -1,0 +1,39 @@
+// https://github.com/devcontainers/images/tree/6d7c43743177facb2e56eef5883f03533fe10adc/src/dotnet
+{
+  "image": "mcr.microsoft.com/devcontainers/dotnet:1-9.0-bookworm",
+  "customizations": {
+    "jetbrains": {
+      "settings": {
+        "com.intellij:app:DateTimeFormatter.dateFormatPattern": "yyyy-MM-dd",
+        "com.intellij:app:DateTimeFormatter.overrideSystemDateFormat": true,
+        "com.intellij:app:EditorSettings.is_ensure_newline_at_eof": true,
+        "com.intellij:app:GeneralSettings.autoSaveIfInactive": true,
+        "com.intellij:app:VcsApplicationSettings.show_editor_preview_on_double_click": false,
+        "Git4Idea:app:Git-Application-Settings.use_credential_helper": true,
+        "org.jetbrains.plugins.terminal:app:TerminalOptionsProvider.myHighlightHyperlinks": false,
+        "org.jetbrains.plugins.terminal:app:TerminalOptionsProvider.myReportMouse": false,
+        "JavaScript:app:JSEditorOptions.automatically_replace_with_template_string_on_typing": false,
+        "JavaScript:app:JSEditorOptions.escape_pasted_text": false,
+        "JavaScript:app:JSEditorOptions.escape_doc_on_copy_paste": false
+      },
+      "plugins": [
+        "ru.adelf.idea.dotenv",
+        "avalonia-rider",
+        "GrepConsole",
+        "com.intellij.javafx",
+        "com.intellij.ml.llm",
+        "com.lol1pop.intellij-visual-studio-code-dark-plus",
+        "org.toml.lang"
+      ]
+    }
+  }
+  // Use for dev certificates  
+  //  "mounts": [
+  //    {
+  //      "type": "volume",
+  //      "source": "x509stores",
+  //      "target": "/home/vscode/.dotnet/corefx/cryptography/x509stores"
+  //    }
+  //  ],
+  //  "onCreateCommand": "bash .devcontainer/setup-dotnet-dev-cert.sh",  
+}

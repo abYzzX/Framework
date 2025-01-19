@@ -41,6 +41,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Byz.Abp.ReactiveUi.Avalonia
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Byz.Abp.Localization.Yaml", "src\Byz.Abp.Localization.Yaml\Byz.Abp.Localization.Yaml.csproj", "{A24D894A-5621-4E08-AB35-4E52DFC96BD6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_devcontainer", "_devcontainer", "{641239DC-7942-4A70-9E84-FE75A8ECDF92}"
+	ProjectSection(SolutionItems) = preProject
+		..\.devcontainer\devcontainer.json = ..\.devcontainer\devcontainer.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
