@@ -3,6 +3,7 @@
   "image": "mcr.microsoft.com/devcontainers/dotnet:1-9.0-bookworm",
   "customizations": {
     "jetbrains": {
+      "backend" : "Rider",
       "settings": {
         "com.intellij:app:DateTimeFormatter.dateFormatPattern": "yyyy-MM-dd",
         "com.intellij:app:DateTimeFormatter.overrideSystemDateFormat": true,
