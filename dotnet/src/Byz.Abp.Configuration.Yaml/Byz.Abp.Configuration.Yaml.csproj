@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../common.props"/>
+
+  <PropertyGroup>
+    <AssemblyName>abYzzX.Abp.Configuration.Yaml</AssemblyName>
+    <RootNamespace>Byz.Abp.Configuration.Yaml</RootNamespace>
+    <ProjectGuid>{8c3fb0c4-14d9-4f71-8726-32bbb7c39fe0}</ProjectGuid>
+    <IsPackable>true</IsPackable>
+    <PackageTags>Configuration YAML YAMLConfiguration</PackageTags>
+    <Description>This package adds YAML configuration files to your project.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NetEscapades.Configuration.Yaml" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+    <PackageReference Include="Volo.Abp.Core" />
+  </ItemGroup>
+  
+</Project>

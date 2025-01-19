@@ -1,0 +1,61 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceInclude Source="Day.Colors.axaml"/>
+  </ResourceDictionary.MergedDictionaries>
+  
+  <!-- UI -->
+  <SolidColorBrush x:Key="Ui.Foreground" Color="{DynamicResource ThemeColors.Gray2}"/>
+  <SolidColorBrush x:Key="Ui.Foreground.Disabled" Color="{DynamicResource ThemeColors.Gray2}"/>
+  <SolidColorBrush x:Key="Ui.Foreground.Inactive" Color="{DynamicResource ThemeColors.Gray2}"/>
+  <SolidColorBrush x:Key="Ui.Background" Color="{DynamicResource ThemeColors.Gray13}"/>
+  <SolidColorBrush x:Key="Ui.Background.Disabled" Color="{DynamicResource ThemeColors.Gray14}"/>
+  <SolidColorBrush x:Key="Ui.Border" Color="{DynamicResource ThemeColors.Gray12}"/>
+  <SolidColorBrush x:Key="Ui.Border.Disabled" Color="{DynamicResource ThemeColors.Gray11}"/>
+  <SolidColorBrush x:Key="Ui.SelectionBackground" Color="{DynamicResource ThemeColors.Blue11}"/>
+  <SolidColorBrush x:Key="Ui.SelectionBackground.Light" Color="{DynamicResource ThemeColors.Blue11}"/>
+  <SolidColorBrush x:Key="Ui.SelectionBackground.Inactive" Color="{DynamicResource ThemeColors.Gray11}"/>
+  <SolidColorBrush x:Key="Ui.SelectionForeground" Color="{DynamicResource ThemeColors.Gray1}"/>
+  <SolidColorBrush x:Key="Ui.SelectionForeground.Inactive" Color="{DynamicResource ThemeColors.Gray1}"/>
+  <SolidColorBrush x:Key="Ui.SeparatorBackground" Color="{DynamicResource ThemeColors.Gray12}"/>
+  <SolidColorBrush x:Key="Ui.SeparatorForeground" Color="{DynamicResource ThemeColors.Gray7}"/>
+  <SolidColorBrush x:Key="Ui.Underline" Color="{DynamicResource ThemeColors.Blue4}"/>
+  <SolidColorBrush x:Key="Ui.Underline.Inactive" Color="{DynamicResource ThemeColors.Gray8}"/>
+
+  <SolidColorBrush x:Key="Ui.HoverBackground" Color="{DynamicResource ThemeColors.Blue12}"/>
+  <SolidColorBrush x:Key="Ui.InfoForeground" Color="{DynamicResource ThemeColors.Gray7}"/>
+  <SolidColorBrush x:Key="Ui.AcceleratorForeground" Color="{DynamicResource ThemeColors.Gray7}"/>
+  <SolidColorBrush x:Key="Ui.ShortcutForeground" Color="{DynamicResource ThemeColors.Gray7}"/>
+  <SolidColorBrush x:Key="Ui.Focus" Color="{DynamicResource ThemeColors.Blue4}"/>
+  <SolidColorBrush x:Key="Ui.ModifiedItemForeground" Color="{DynamicResource ThemeColors.Blue3}"/>
+  
+  <!-- Button -->
+  <x:Double x:Key="Button.MinWidth">72</x:Double>
+  <x:Double x:Key="Button.MinHeight">28</x:Double>
+  <CornerRadius x:Key="Button.CornerRadius">8</CornerRadius>
+  <SolidColorBrush x:Key="Button.Background" Color="{DynamicResource ThemeColors.Gray9}"/>
+  <SolidColorBrush x:Key="Button.Foreground" Color="{DynamicResource ThemeColors.Gray6}"/>
+  <SolidColorBrush x:Key="Button.Border" Color="{DynamicResource ThemeColors.Gray9}"/>
+  <SolidColorBrush x:Key="Button.FocusBorder" Color="{DynamicResource ThemeColors.Gray14}"/>
+  <!-- Button.Default -->
+  <SolidColorBrush x:Key="Button.Background.Default" Color="{DynamicResource ThemeColors.Blue4}"/>
+  <SolidColorBrush x:Key="Button.Foreground.Default" Color="{DynamicResource ThemeColors.Gray14}"/>
+  <SolidColorBrush x:Key="Button.Border.Default" Color="{DynamicResource ThemeColors.Blue4}"/>
+  <SolidColorBrush x:Key="Button.FocusBorder.Default" Color="{DynamicResource ThemeColors.Gray14}"/>
+  
+  <!-- Window.HeaderBar -->
+  <x:Double x:Key="Window.HeaderBar.Height">40.0</x:Double>
+  <Thickness x:Key="Window.HeaderBar.Margin">0,0,0,0</Thickness>
+  <SolidColorBrush x:Key="Window.HeaderBar.Background.Active" Color="Transparent"/>
+  <SolidColorBrush x:Key="Window.HeaderBar.Background.Inactive" Color="{DynamicResource ThemeColors.Gray4}"/>
+  <!-- Window.HeaderBar.Button -->
+  <x:Double x:Key="Window.HeaderBar.Button.Width">32</x:Double>
+  <x:Double x:Key="Window.HeaderBar.Button.Height">32</x:Double>
+  <x:Double x:Key="Window.HeaderBar.Button.Opacity">0.8</x:Double>
+  <Thickness x:Key="Window.HeaderBar.Button.Margin">2</Thickness>
+  <Thickness x:Key="Window.HeaderBar.Button.Padding">0</Thickness>
+  <Thickness x:Key="Window.HeaderBar.Button.BorderThickness">0</Thickness>
+  <CornerRadius x:Key="Window.HeaderBar.Button.CornerRadius">5</CornerRadius>
+  <SolidColorBrush x:Key="Window.HeaderBar.Button.Foreground" Color="{DynamicResource ThemeColors.Gray6}"/>
+  <SolidColorBrush x:Key="Window.HeaderBar.Button.Background" Color="Transparent"/>  
+</ResourceDictionary>

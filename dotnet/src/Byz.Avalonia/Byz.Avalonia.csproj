@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../common.props"/>
+
+  <PropertyGroup>
+    <AssemblyName>abYzzX.Avalonia</AssemblyName>
+    <ProjectGuid>{a8fede83-bdcd-404d-85a3-69f568e96d24}</ProjectGuid>
+    <IsPackable>true</IsPackable>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>    
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia"/>
+    <PackageReference Include="Avalonia.ReactiveUI"/>
+    <PackageReference Include="Avalonia.Controls.DataGrid"/>
+    <PackageReference Include="Avalonia.Controls.ColorPicker"/>
+    <PackageReference Include="Avalonia.Controls.ItemsRepeater"/>
+    <PackageReference Include="Avalonia.Controls.TreeDataGrid"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Autofac" />
+    <PackageReference Include="Volo.Abp.Core" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Byz.Abp.ReactiveUi\Byz.Abp.ReactiveUi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="Theme/**/*.axaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Theme\Old\DataGrid.axaml" />
+    <UpToDateCheckInput Remove="Theme\Old\DevRTheme.axaml" />
+    <UpToDateCheckInput Remove="Theme\Old\TabStripItem.axaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ByzTheme.axaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  
+</Project>

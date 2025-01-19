@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../common.props"/>
+
+  <PropertyGroup>
+    <AssemblyName>abYzzX.Avalonia.Controls</AssemblyName>
+    <RootNamespace>Avalonia.Controls</RootNamespace>
+    <ProjectGuid>{c943c20b-67c6-4395-8d2f-116c4ebf930a}</ProjectGuid>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Autofac" />
+    <PackageReference Include="Volo.Abp.Core" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,101 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{679175E5-7930-4500-A951-D9ADD6DBC85A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Byz.Abp.Avalonia", "src\Byz.Abp.Avalonia\Byz.Abp.Avalonia.csproj", "{9E98A272-DA27-4AA9-B680-2B3017ACCE12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Byz.Abp.Hosting.Shared", "src\Byz.Abp.Hosting.Shared\Byz.Abp.Hosting.Shared.csproj", "{9FF0C962-AF31-457D-A386-91F6F551E52D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Byz.Avalonia.Controls", "src\Byz.Avalonia.Controls\Byz.Avalonia.Controls.csproj", "{153EB73D-F653-4631-8659-61CA6A41359A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Byz.Avalonia", "src\Byz.Avalonia\Byz.Avalonia.csproj", "{B4BAFD82-F96F-424D-8AB3-BC015B02E772}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_sln", "_sln", "{74D3EB4D-DEEC-4199-941F-153CAA391847}"
+	ProjectSection(SolutionItems) = preProject
+		common.props = common.props
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+		NuGet.config = NuGet.config
+		..\.gitignore = ..\.gitignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_doc", "_doc", "{323F4A3C-1B43-4B14-8625-739E84A4C088}"
+	ProjectSection(SolutionItems) = preProject
+		..\CHANGELOG.md = ..\CHANGELOG.md
+		..\LICENSE.md = ..\LICENSE.md
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaApp", "samples\AvaloniaApp\AvaloniaApp.csproj", "{D1C79575-B1B5-4CE4-94B6-EB03CD824783}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{DEE148F5-D2DA-4CF5-BBE0-C49B0F5C6CD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Byz.Abp.Configuration.Yaml", "src\Byz.Abp.Configuration.Yaml\Byz.Abp.Configuration.Yaml.csproj", "{F29F8235-F992-4C68-B173-6C37E9987747}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Byz.Abp.ReactiveUi", "src\Byz.Abp.ReactiveUi\Byz.Abp.ReactiveUi.csproj", "{0DF457B8-B944-4B26-B568-2B7FAA0FEDBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Byz.Abp.ReactiveUi.Avalonia", "src\Byz.Abp.ReactiveUi.Avalonia\Byz.Abp.ReactiveUi.Avalonia.csproj", "{A1C3DA07-8559-49FE-A145-E4F522280116}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Byz.Abp.Localization.Yaml", "src\Byz.Abp.Localization.Yaml\Byz.Abp.Localization.Yaml.csproj", "{A24D894A-5621-4E08-AB35-4E52DFC96BD6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E98A272-DA27-4AA9-B680-2B3017ACCE12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E98A272-DA27-4AA9-B680-2B3017ACCE12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E98A272-DA27-4AA9-B680-2B3017ACCE12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E98A272-DA27-4AA9-B680-2B3017ACCE12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FF0C962-AF31-457D-A386-91F6F551E52D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FF0C962-AF31-457D-A386-91F6F551E52D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FF0C962-AF31-457D-A386-91F6F551E52D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FF0C962-AF31-457D-A386-91F6F551E52D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{153EB73D-F653-4631-8659-61CA6A41359A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{153EB73D-F653-4631-8659-61CA6A41359A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{153EB73D-F653-4631-8659-61CA6A41359A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{153EB73D-F653-4631-8659-61CA6A41359A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4BAFD82-F96F-424D-8AB3-BC015B02E772}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4BAFD82-F96F-424D-8AB3-BC015B02E772}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4BAFD82-F96F-424D-8AB3-BC015B02E772}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4BAFD82-F96F-424D-8AB3-BC015B02E772}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1C79575-B1B5-4CE4-94B6-EB03CD824783}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1C79575-B1B5-4CE4-94B6-EB03CD824783}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1C79575-B1B5-4CE4-94B6-EB03CD824783}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1C79575-B1B5-4CE4-94B6-EB03CD824783}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F29F8235-F992-4C68-B173-6C37E9987747}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F29F8235-F992-4C68-B173-6C37E9987747}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F29F8235-F992-4C68-B173-6C37E9987747}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F29F8235-F992-4C68-B173-6C37E9987747}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DF457B8-B944-4B26-B568-2B7FAA0FEDBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DF457B8-B944-4B26-B568-2B7FAA0FEDBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DF457B8-B944-4B26-B568-2B7FAA0FEDBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DF457B8-B944-4B26-B568-2B7FAA0FEDBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1C3DA07-8559-49FE-A145-E4F522280116}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1C3DA07-8559-49FE-A145-E4F522280116}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1C3DA07-8559-49FE-A145-E4F522280116}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1C3DA07-8559-49FE-A145-E4F522280116}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A24D894A-5621-4E08-AB35-4E52DFC96BD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A24D894A-5621-4E08-AB35-4E52DFC96BD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A24D894A-5621-4E08-AB35-4E52DFC96BD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A24D894A-5621-4E08-AB35-4E52DFC96BD6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9E98A272-DA27-4AA9-B680-2B3017ACCE12} = {679175E5-7930-4500-A951-D9ADD6DBC85A}
+		{9FF0C962-AF31-457D-A386-91F6F551E52D} = {679175E5-7930-4500-A951-D9ADD6DBC85A}
+		{153EB73D-F653-4631-8659-61CA6A41359A} = {679175E5-7930-4500-A951-D9ADD6DBC85A}
+		{B4BAFD82-F96F-424D-8AB3-BC015B02E772} = {679175E5-7930-4500-A951-D9ADD6DBC85A}
+		{D1C79575-B1B5-4CE4-94B6-EB03CD824783} = {DEE148F5-D2DA-4CF5-BBE0-C49B0F5C6CD4}
+		{F29F8235-F992-4C68-B173-6C37E9987747} = {679175E5-7930-4500-A951-D9ADD6DBC85A}
+		{0DF457B8-B944-4B26-B568-2B7FAA0FEDBF} = {679175E5-7930-4500-A951-D9ADD6DBC85A}
+		{A1C3DA07-8559-49FE-A145-E4F522280116} = {679175E5-7930-4500-A951-D9ADD6DBC85A}
+		{A24D894A-5621-4E08-AB35-4E52DFC96BD6} = {679175E5-7930-4500-A951-D9ADD6DBC85A}
+	EndGlobalSection
+EndGlobal

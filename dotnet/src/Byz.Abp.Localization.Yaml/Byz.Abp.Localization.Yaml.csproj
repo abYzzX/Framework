@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../common.props"/>
+
+  <PropertyGroup>
+    <AssemblyName>abYzzX.Abp.Localization.Yaml</AssemblyName>
+    <RootNamespace>Byz.Abp.Localization</RootNamespace>
+    <ProjectGuid>{9edcd5f5-5044-432d-9d39-72c7555c014f}</ProjectGuid>
+    <IsPackable>true</IsPackable>
+    <PackageTags>ABP Localization Yaml</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="YamlDotNet"/>
+    <PackageReference Include="Volo.Abp.Core" />
+    <PackageReference Include="Volo.Abp.Localization" />
+  </ItemGroup>
+  
+</Project>

@@ -1,0 +1,27 @@
+﻿Serilog:
+  Using:
+    - Serilog.Sinks.Async
+    - Serilog.Sinks.Console
+  Enrich:
+    - WithThreadId
+    - WithThreadName
+    - WithMachineName
+    - WithEnvironmentName
+    - WithEnvironmentUserName
+    - FromLogContext
+    - WithApplicationVersion
+    - WithApplicationType
+  MinimumLevel:
+    Default: Verbose
+    Override:
+      Avalonia: Warning
+      Microsoft.EntityFrameworkCore: Warning
+      Volo.Abp.BackgroundJobs: Warning
+      Volo.Abp.Auditing: Warning
+  WriteTo:
+    - Name: Async
+      Args:
+        configure:
+          - Name: Console
+            Args:
+              outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj} <s:{SourceContext}>{NewLine}{Exception}"

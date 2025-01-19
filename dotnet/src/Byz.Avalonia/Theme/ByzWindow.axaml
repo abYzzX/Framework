@@ -1,0 +1,116 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:views="clr-namespace:Byz.Avalonia.Views">
+  <Design.PreviewWith>
+    <views:ByzWindow Width="800" Height="450">
+    </views:ByzWindow>
+  </Design.PreviewWith>
+
+  <Styles.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="Variants/Night.axaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+
+    <ControlTemplate TargetType="views:ByzWindow" x:Key="ByzWindowTemplate">
+      <Panel RenderOptions.EdgeMode="Antialias">
+        <Border x:Name="PART_TransparencyFallback" IsHitTestVisible="False" />
+        <Border Background="{DynamicResource Ui.Background}" IsHitTestVisible="False" />
+        <Panel Background="Transparent" Margin="{TemplateBinding WindowDecorationMargin}" />
+        <VisualLayerManager>
+          <VisualLayerManager.ChromeOverlayLayer>
+            <TitleBar MinHeight="{DynamicResource Window.HeaderBar.Height}"
+                      MaxHeight="{DynamicResource Window.HeaderBar.Height}"
+                      Background="Transparent" />
+          </VisualLayerManager.ChromeOverlayLayer>
+          <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+              <RowDefinition MinHeight="{DynamicResource Window.HeaderBar.Height}" MaxHeight="{DynamicResource Window.HeaderBar.Height}" />
+              <RowDefinition Height="1" />
+              <RowDefinition Height="*" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" x:Name="PART_HeaderBarBackground" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
+                    Background="{DynamicResource Window.HeaderBar.Background.Active}" IsHitTestVisible="False"/>
+            <ItemsControl Grid.Row="0" x:Name="PART_HeaderBarItems" 
+                          Margin="8,0,0,0"
+                          HorizontalAlignment="Left" ItemsSource="{TemplateBinding HeaderItems}">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <StackPanel Orientation="Horizontal" Spacing="6"/>
+                </ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+            </ItemsControl>
+            <Border Grid.Row="1" Height="1" Background="{DynamicResource Ui.Border}" HorizontalAlignment="Stretch" />
+          </Grid>
+        </VisualLayerManager>
+      </Panel>
+    </ControlTemplate>
+  </Styles.Resources>
+
+  <Style Selector="views|ByzWindow">
+    <Setter Property="ExtendClientAreaChromeHints" Value="PreferSystemChrome" />
+    <Setter Property="ExtendClientAreaToDecorationsHint" Value="True" />
+    <Setter Property="ExtendClientAreaTitleBarHeightHint" Value="{DynamicResource Window.HeaderBar.Height}" />
+    <Setter Property="Template" Value="{StaticResource ByzWindowTemplate}" />
+    <Setter Property="Foreground" Value="{DynamicResource Ui.Foreground}"/>
+  </Style>
+
+  <Style Selector="views|ByzWindow[IsActive=False] /template/ Border#PART_HeaderBarBackground">
+    <Setter Property="Background" Value="{DynamicResource Window.HeaderBar.Background.Inactive}"></Setter>
+  </Style>
+  
+  <Style Selector="CaptionButtons#PART_CaptionButtons">
+    <Setter Property="MinHeight" Value="{DynamicResource Window.HeaderBar.Height}" />
+    <Setter Property="MaxHeight" Value="{DynamicResource Window.HeaderBar.Height}" />
+    <Setter Property="BorderThickness" Value="0" />
+  </Style>
+
+  <Style Selector="TitleBar:normal /template/ CaptionButtons#PART_CaptionButtons">
+    <Style Selector="^:normal /template/ Button">
+      <Setter Property="MinHeight" Value="{DynamicResource Window.HeaderBar.Height}" />
+      <Setter Property="MaxHeight" Value="{DynamicResource Window.HeaderBar.Height}" />
+      <Setter Property="BorderThickness" Value="0" />
+    </Style>
+    <Style Selector="^:normal /template/ Path">
+      <Setter Property="Fill" Value="{DynamicResource Ui.Foreground}" />
+    </Style>
+    <Style Selector="^:pointerover /template/ Button#PART_MinimizeButton">
+      <Setter Property="Background" Value="{DynamicResource Ui.HoverBackground}" />
+    </Style>
+    <Style Selector="^:pointerover /template/ Button#PART_RestoreButton">
+      <Setter Property="Background" Value="{DynamicResource Ui.HoverBackground}" />
+    </Style>
+  </Style>
+
+  <!-- HeaderBar Control Overwrites -->
+  
+  <Style Selector="views|ByzWindow /template/ ItemsControl#PART_HeaderBarItems > Button">
+    <Setter Property="Width" Value="{DynamicResource Window.HeaderBar.Button.Width}"/>
+    <Setter Property="MinWidth" Value="{DynamicResource Window.HeaderBar.Button.Width}"/>
+    <Setter Property="MaxWidth" Value="{DynamicResource Window.HeaderBar.Button.Width}"/>
+    <Setter Property="Height" Value="{DynamicResource Window.HeaderBar.Button.Height}"/>
+    <Setter Property="MinHeight" Value="{DynamicResource Window.HeaderBar.Button.Height}"/>
+    <Setter Property="MaxHeight" Value="{DynamicResource Window.HeaderBar.Button.Height}"/>
+    <Setter Property="Opacity" Value="{DynamicResource Window.HeaderBar.Button.Opacity}"/>
+    <Setter Property="Margin" Value="{DynamicResource Window.HeaderBar.Button.Margin}"/>
+    <Setter Property="Padding" Value="{DynamicResource Window.HeaderBar.Button.Padding}"/>
+    <Setter Property="CornerRadius" Value="{DynamicResource Window.HeaderBar.Button.CornerRadius}"/>
+    <Setter Property="BorderThickness" Value="{DynamicResource Window.HeaderBar.Button.BorderThickness}"/>
+    <Setter Property="Foreground" Value="{DynamicResource Window.HeaderBar.Button.Foreground}"/>
+    <Setter Property="Background" Value="{DynamicResource Window.HeaderBar.Button.Background}"/>
+    <Style Selector="^:pointerover">
+      <Setter Property="Background" Value="{DynamicResource Ui.HoverBackground}"/>
+    </Style>
+    <Style Selector="^:focus /template/ Border#PART_Border">
+      <Setter Property="BorderThickness" Value="{DynamicResource Window.HeaderBar.Button.BorderThickness}"/>
+      <Setter Property="Padding" Value="{DynamicResource Window.HeaderBar.Button.Padding}"/>
+    </Style>
+    <Style Selector="^:focus:pointerover /template/ Border#PART_Border">
+      <Setter Property="BorderThickness" Value="{DynamicResource Window.HeaderBar.Button.BorderThickness}"/>
+      <Setter Property="Padding" Value="{DynamicResource Window.HeaderBar.Button.Padding}"/>
+    </Style>
+  </Style>
+  
+</Styles>

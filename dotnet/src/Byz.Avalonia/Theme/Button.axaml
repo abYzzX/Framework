@@ -1,0 +1,109 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Design.PreviewWith>
+    <Border Padding="20" Background="{DynamicResource Ui.Background}">
+      <StackPanel Spacing="6" Orientation="Horizontal">
+        <Button IsEnabled="False" IsDefault="True">Disabled Default</Button>
+        <Button IsDefault="True">Default</Button>
+        <Button>Enabled</Button>
+        <Button IsEnabled="False">Disabled</Button>
+      </StackPanel>
+    </Border>
+  </Design.PreviewWith>
+
+  <Styles.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="Variants/Night.axaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+
+    <ControlTheme x:Key="{x:Type Button}" TargetType="Button">
+      <Setter Property="Background" Value="{DynamicResource Button.Background}" />
+      <Setter Property="Foreground" Value="{DynamicResource Button.Foreground}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource Ui.ControlBorder}" />
+
+      <Setter Property="BorderThickness" Value="{DynamicResource Button.BorderThickness}" />
+      <Setter Property="CornerRadius" Value="{DynamicResource Button.CornerRadius}" />
+      <Setter Property="HorizontalAlignment" Value="Left" />
+      <Setter Property="VerticalAlignment" Value="Center" />
+      <Setter Property="HorizontalContentAlignment" Value="Center" />
+      <Setter Property="VerticalContentAlignment" Value="Center" />
+      <Setter Property="MinWidth" Value="{DynamicResource Button.MinWidth}" />
+      <Setter Property="MinHeight" Value="{DynamicResource Button.MinHeight}" />
+      <Setter Property="Padding" Value="{DynamicResource Button.Padding}" />
+
+      <Setter Property="Template">
+        <ControlTemplate>
+          <Border x:Name="PART_Border"
+                  Background="{TemplateBinding Background}"
+                  BorderBrush="{TemplateBinding BorderBrush}"
+                  BorderThickness="{TemplateBinding BorderThickness}"
+                  CornerRadius="{TemplateBinding CornerRadius}"
+                  Padding="2">
+            <ContentPresenter x:Name="PART_ContentPresenter"
+                              Content="{TemplateBinding Content}"
+                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                              RecognizesAccessKey="True"
+                              Padding="{TemplateBinding Padding}"
+                              Margin="{TemplateBinding Margin}"
+                              FontWeight="Regular"
+                              BorderBrush="Transparent"
+                              BorderThickness="1"
+                              CornerRadius="{TemplateBinding CornerRadius}"
+                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+          </Border>
+        </ControlTemplate>
+      </Setter>
+
+      <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Foreground" Value="{DynamicResource Button.Foreground.Disabled}" />
+      </Style>
+
+      <Style Selector="^:disabled /template/ Border#PART_Border">
+        <Setter Property="Background" Value="{DynamicResource Button.Background.Disabled}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Ui.Border.Disabled}" />
+      </Style>
+
+      <Style Selector="^:focus[IsDefault=False] /template/ Border#PART_Border">
+        <Setter Property="BorderBrush" Value="{DynamicResource Ui.Focus}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="Padding" Value="1" />
+      </Style>
+
+      <Style Selector="^[IsDefault=True] /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Foreground" Value="{DynamicResource Button.Foreground.Default}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+      </Style>
+
+      <Style Selector="^[IsDefault=True] /template/ Border#PART_Border">
+        <Setter Property="Background" Value="{DynamicResource Button.Background.Default}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+      </Style>
+
+      <Style Selector="^:focus[IsDefault=True] /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Foreground" Value="{DynamicResource Button.Foreground.Default}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Button.Background}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource Button.BorderThickness.Focus}" />
+      </Style>
+
+      <Style Selector="^:focus[IsDefault=True] /template/ Border#PART_Border">
+        <Setter Property="Background" Value="{DynamicResource Button.Background.Default}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Ui.Focus}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource Button.BorderThickness}" />
+        <Setter Property="Padding" Value="1" />
+      </Style>
+
+      <Style Selector="^:disabled[IsDefault=true] /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Foreground" Value="{DynamicResource Button.Foreground.Disabled}" />
+      </Style>
+
+      <Style Selector="^:disabled[IsDefault=true] /template/ Border#PART_Border">
+        <Setter Property="Background" Value="{DynamicResource Button.Background.Disabled}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Ui.Border.Disabled}" />
+      </Style>
+    </ControlTheme>
+  </Styles.Resources>
+</Styles>

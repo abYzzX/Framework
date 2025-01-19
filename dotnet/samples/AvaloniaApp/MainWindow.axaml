@@ -1,0 +1,14 @@
+<byz:ByzWindow xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:byz="clr-namespace:Byz.Avalonia.Views;assembly=abYzzX.Avalonia"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        Width="800" Height="450" WindowStartupLocation="CenterScreen"
+        x:Class="AvaloniaApp.MainWindow" IsWindowTitleVisible="False">
+  <byz:ByzWindow.HeaderItems>
+    <Button Width="32" Padding="0" Margin="0" MaxWidth="32" MinWidth="32">A</Button>
+    <Button Width="32" Padding="0" Margin="0" MaxWidth="32" MinWidth="32">B</Button>
+    <TextBlock Text="BLUB"></TextBlock>
+  </byz:ByzWindow.HeaderItems>
+</byz:ByzWindow>

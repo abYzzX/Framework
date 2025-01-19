@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../common.props"/>
+
+  <PropertyGroup>
+    <AssemblyName>abYzzX.Abp.Avalonia</AssemblyName>
+    <RootNamespace>Byz.Abp.Avalonia</RootNamespace>
+    <ProjectGuid>{ce7bac07-ea3f-4dc4-a2c3-741fdc29ae81}</ProjectGuid>
+    <IsPackable>true</IsPackable>
+    <PackageTags>ABP Avalonia</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia"/>
+    <PackageReference Include="Splat.Autofac"/>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Serilog" />
+    <PackageReference Include="Volo.Abp.Autofac" />
+    <PackageReference Include="Volo.Abp.Core" />
+  </ItemGroup>
+
+</Project>

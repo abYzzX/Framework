@@ -1,0 +1,13 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:byz="clr-namespace:Byz.Avalonia;assembly=abYzzX.Avalonia"
+             xmlns:theme="clr-namespace:Byz.Avalonia.Theme;assembly=abYzzX.Avalonia"
+             x:Class="AvaloniaApp.App"
+             RequestedThemeVariant="Dark">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.Styles>
+      <FluentTheme DensityStyle="Compact" />
+        <theme:ByzTheme />
+    </Application.Styles>
+</Application>

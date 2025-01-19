@@ -1,0 +1,126 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceInclude Source="Night.Colors.axaml"/>
+  </ResourceDictionary.MergedDictionaries>
+  
+  <!-- UI -->
+  <SolidColorBrush x:Key="Ui.Foreground" Color="{DynamicResource ThemeColors.Gray12}"/>
+  <SolidColorBrush x:Key="Ui.Foreground.Disabled" Color="{DynamicResource ThemeColors.Gray6}"/>
+  <SolidColorBrush x:Key="Ui.Foreground.Inactive" Color="{DynamicResource ThemeColors.Gray6}"/>
+  <SolidColorBrush x:Key="Ui.Background" Color="{DynamicResource ThemeColors.Gray2}"/>
+  <SolidColorBrush x:Key="Ui.Background.Disabled" Color="{DynamicResource ThemeColors.Gray2}"/>
+  <SolidColorBrush x:Key="Ui.Border" Color="{DynamicResource ThemeColors.Gray1}"/>
+  <SolidColorBrush x:Key="Ui.Border.Disabled" Color="{DynamicResource ThemeColors.Gray4}"/>
+  <SolidColorBrush x:Key="Ui.SelectionBackground" Color="{DynamicResource ThemeColors.Blue2}"/>
+  <SolidColorBrush x:Key="Ui.SelectionBackground.Light" Color="{DynamicResource ThemeColors.Blue2}"/>
+  <SolidColorBrush x:Key="Ui.SelectionBackground.Inactive" Color="{DynamicResource ThemeColors.Gray4}"/>
+  <SolidColorBrush x:Key="Ui.SelectionForeground" Color="{DynamicResource ThemeColors.Gray12}"/>
+  <SolidColorBrush x:Key="Ui.SelectionForeground.Inactive" Color="{DynamicResource ThemeColors.Gray12}"/>
+  <SolidColorBrush x:Key="Ui.SeparatorBackground" Color="{DynamicResource ThemeColors.Gray3}"/>
+  <SolidColorBrush x:Key="Ui.SeparatorForeground" Color="{DynamicResource ThemeColors.Gray7}"/>
+  <SolidColorBrush x:Key="Ui.Underline" Color="{DynamicResource ThemeColors.Blue6}"/>
+  <SolidColorBrush x:Key="Ui.Underline.Inactive" Color="{DynamicResource ThemeColors.Gray6}"/>
+
+  <SolidColorBrush x:Key="Ui.HoverBackground" Color="{DynamicResource ThemeColors.Gray3}"/>
+  <SolidColorBrush x:Key="Ui.InfoForeground" Color="{DynamicResource ThemeColors.Gray7}"/>
+  <SolidColorBrush x:Key="Ui.AcceleratorForeground" Color="{DynamicResource ThemeColors.Gray7}"/>
+  <SolidColorBrush x:Key="Ui.ShortcutForeground" Color="{DynamicResource ThemeColors.Gray7}"/>
+  <SolidColorBrush x:Key="Ui.Focus" Color="{DynamicResource ThemeColors.Blue6}"/>
+  <SolidColorBrush x:Key="Ui.ModifiedItemForeground" Color="{DynamicResource ThemeColors.Blue9}"/>
+  
+  <SolidColorBrush x:Key="Ui.ControlBorder" Color="{DynamicResource ThemeColors.Gray5}"/>
+  <CornerRadius x:Key="Ui.CornerRadius">4</CornerRadius>
+
+  <!-- Validation -->
+  <SolidColorBrush x:Key="Message.Error.Foreground" Color="{DynamicResource ThemeColors.Red12}"/>
+  <SolidColorBrush x:Key="Message.Error.Background" Color="{DynamicResource ThemeColors.Red7}"/>
+  <SolidColorBrush x:Key="Message.Warning.Foreground" Color="{DynamicResource ThemeColors.Yellow1}"/>
+  <SolidColorBrush x:Key="Message.Warning.Background" Color="{DynamicResource ThemeColors.Yellow7}"/>
+  <SolidColorBrush x:Key="Message.Information.Foreground" Color="{DynamicResource ThemeColors.Blue13}"/>
+  <SolidColorBrush x:Key="Message.Information.Background" Color="{DynamicResource ThemeColors.Blue4}"/>
+  <SolidColorBrush x:Key="Message.Query.Foreground" Color="{DynamicResource ThemeColors.Teal12}"/>
+  <SolidColorBrush x:Key="Message.Query.Background" Color="{DynamicResource ThemeColors.Teal4}"/>
+  
+  <!-- Button -->
+  <x:Double x:Key="Button.MinWidth">72</x:Double>
+  <x:Double x:Key="Button.MinHeight">24</x:Double>
+  <CornerRadius x:Key="Button.CornerRadius">4</CornerRadius>
+  <Thickness x:Key="Button.BorderThickness">1</Thickness>
+  <Thickness x:Key="Button.BorderThickness.Focus">2</Thickness>
+  <Thickness x:Key="Button.Padding">13,4</Thickness>
+  <Thickness x:Key="Button.Margin">1</Thickness>
+  <Thickness x:Key="Button.Margin.Focus">0</Thickness>
+  
+  <SolidColorBrush x:Key="Button.Background" Color="{DynamicResource ThemeColors.Gray2}"/>
+  <SolidColorBrush x:Key="Button.Background.Disabled" Color="{DynamicResource ThemeColors.Gray3}"/>
+  <SolidColorBrush x:Key="Button.Background.Default" Color="{DynamicResource ThemeColors.Blue6}"/>
+  <SolidColorBrush x:Key="Button.Foreground" Color="{DynamicResource ThemeColors.Gray12}"/>
+  <SolidColorBrush x:Key="Button.Foreground.Disabled" Color="{DynamicResource ThemeColors.Gray5}"/>
+  <SolidColorBrush x:Key="Button.Foreground.Default" Color="{DynamicResource ThemeColors.Gray14}"/>
+  <SolidColorBrush x:Key="Button.Border" Color="{DynamicResource ThemeColors.Gray5}"/>
+  <SolidColorBrush x:Key="Button.Border.Default" Color="{DynamicResource ThemeColors.Blue6}"/>
+  <SolidColorBrush x:Key="Button.FocusBorder" Color="{DynamicResource ThemeColors.Gray2}"/>
+  <SolidColorBrush x:Key="Button.FocusBorder.Default" Color="{DynamicResource ThemeColors.Gray1}"/>
+  
+  <!-- Window.HeaderBar -->
+  <x:Double x:Key="Window.HeaderBar.Height">40.0</x:Double>
+  <Thickness x:Key="Window.HeaderBar.Margin">0,0,0,0</Thickness>
+  <SolidColorBrush x:Key="Window.HeaderBar.Background.Active" Color="Transparent"/>
+  <SolidColorBrush x:Key="Window.HeaderBar.Background.Inactive" Color="{DynamicResource ThemeColors.Gray4}"/>
+  <!-- Window.HeaderBar.Button -->
+  <x:Double x:Key="Window.HeaderBar.Button.Width">32</x:Double>
+  <x:Double x:Key="Window.HeaderBar.Button.Height">32</x:Double>
+  <x:Double x:Key="Window.HeaderBar.Button.Opacity">0.8</x:Double>
+  <Thickness x:Key="Window.HeaderBar.Button.Margin">2</Thickness>
+  <Thickness x:Key="Window.HeaderBar.Button.Padding">0</Thickness>
+  <Thickness x:Key="Window.HeaderBar.Button.BorderThickness">0</Thickness>
+  <CornerRadius x:Key="Window.HeaderBar.Button.CornerRadius">5</CornerRadius>
+  <SolidColorBrush x:Key="Window.HeaderBar.Button.Foreground" Color="{DynamicResource ThemeColors.Gray12}"/>
+  <SolidColorBrush x:Key="Window.HeaderBar.Button.Background" Color="Transparent"/>
+  
+  <!-- Expander -->
+  <x:Double x:Key="Expander.MinHeight">8</x:Double>
+  <Thickness x:Key="Expander.Header.Padding">8,0,0,0</Thickness>
+  <Thickness x:Key="Expander.Chevron.Padding">0,0,4,0</Thickness>
+  <Thickness x:Key="Expander.Content.Padding">20,8,4,8</Thickness>
+  <Thickness x:Key="Expander.Content.Border.Thickness">0</Thickness>
+  <SolidColorBrush x:Key="Expander.Header.Foreground" Color="{DynamicResource ThemeColors.Gray12}"/>
+  <SolidColorBrush x:Key="Expander.Header.Background" Color="Transparent"/>
+  <SolidColorBrush x:Key="Expander.Content.Border" Color="Transparent"/>
+  <SolidColorBrush x:Key="Expander.Chevron.Foreground" Color="{DynamicResource ThemeColors.Gray12}"/>
+  <SolidColorBrush x:Key="Expander.Chevron.Background" Color="Transparent"/>
+  
+  <!-- ComboBox -->
+  <Thickness x:Key="ComboBox.TopHeader.Margin">0,0,0,4</Thickness>
+  <x:Int32 x:Key="ComboBox.Popup.MaxNumberOfItems">15</x:Int32>
+  <x:Int32 x:Key="ComboBox.Popup.MaxNumberOfItemsThatCanBeShownOnOneSide">7</x:Int32>
+  <Thickness x:Key="ComboBox.Padding">9,1,6,1</Thickness>
+  <Thickness x:Key="ComboBox.EditableTextPadding">11,5,32,6</Thickness>
+  <Thickness x:Key="ComboBox.BorderThickness">1.25</Thickness>
+  <x:Double x:Key="ComboBox.MinWidth">49</x:Double>  
+  <x:Double x:Key="ComboBox.MinHeight">28</x:Double>  
+  <SolidColorBrush x:Key="ComboBox.Foreground" Color="{DynamicResource ThemeColors.Gray12}"/>
+  <SolidColorBrush x:Key="ComboBox.Foreground.Disabled" Color="{DynamicResource ThemeColors.Gray8}"/>
+  <SolidColorBrush x:Key="ComboBox.Background" Color="{DynamicResource ThemeColors.Gray2}"/>
+  <SolidColorBrush x:Key="ComboBox.Background.Disabled" Color="{DynamicResource ThemeColors.Gray3}"/>
+  <SolidColorBrush x:Key="ComboBox.PlaceHolder.Foreground" Color="{DynamicResource ThemeColors.Gray8}"/>
+  <SolidColorBrush x:Key="ComboBox.Chevron.Foreground" Color="{DynamicResource ThemeColors.Gray12}"/>
+  <SolidColorBrush x:Key="ComboBox.Chevron.Foreground.Disabled" Color="{DynamicResource ThemeColors.Gray8}"/>
+  <SolidColorBrush x:Key="ComboBox.Chevron.Background" Color="Transparent"/>
+  <SolidColorBrush x:Key="ComboBox.Chevron.Background.Disabled" Color="Transparent"/>
+  
+  <!-- CheckBox -->
+  <Thickness x:Key="CheckBox.Padding">4,0,0,0</Thickness>
+  <Thickness x:Key="CheckBox.BorderThickness">1.25</Thickness>
+  <x:Double x:Key="CheckBox.MinHeight">16</x:Double>
+  <x:Double x:Key="CheckBox.MinWidth">24</x:Double>
+  <x:Double x:Key="CheckBox.IconSize">20</x:Double>
+  <SolidColorBrush x:Key="CheckBox.Foreground" Color="{DynamicResource ThemeColors.Gray12}"/>
+  <SolidColorBrush x:Key="CheckBox.Foreground.Checked" Color="{DynamicResource ThemeColors.Gray12}"/>
+  <SolidColorBrush x:Key="CheckBox.Foreground.Disabled" Color="{DynamicResource ThemeColors.Gray8}"/>
+  <SolidColorBrush x:Key="CheckBox.Background" Color="{DynamicResource ThemeColors.Gray2}"/>
+  <SolidColorBrush x:Key="CheckBox.Background.Checked" Color="{DynamicResource ThemeColors.Blue2}"/>
+  <SolidColorBrush x:Key="CheckBox.Background.Disabled" Color="{DynamicResource ThemeColors.Gray3}"/>
+
+</ResourceDictionary>

@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia"/>
+    <PackageReference Include="Avalonia.Desktop"/>
+    <PackageReference Include="Avalonia.Themes.Fluent"/>
+    <PackageReference Include="Avalonia.Fonts.Inter"/>
+    <PackageReference Include="Avalonia.Diagnostics">
+      <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+      <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Serilog.Sinks.Async"/>
+    <PackageReference Include="Serilog.Sinks.Console"/>
+    <PackageReference Include="System.Reactive"/>
+    <PackageReference Include="System.Reactive.Linq"/>
+    <PackageReference Include="Volo.Abp.Core"/>
+    <PackageReference Include="Volo.Abp.Autofac"/>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Byz.Abp.Avalonia\Byz.Abp.Avalonia.csproj" />
+    <ProjectReference Include="..\..\src\Byz.Abp.Configuration.Yaml\Byz.Abp.Configuration.Yaml.csproj" />
+    <ProjectReference Include="..\..\src\Byz.Abp.Hosting.Shared\Byz.Abp.Hosting.Shared.csproj" />
+    <ProjectReference Include="..\..\src\Byz.Avalonia\Byz.Avalonia.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Update="appsettings.yml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

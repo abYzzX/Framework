@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../common.props"/>
+
+  <PropertyGroup>
+    <AssemblyName>abYzzX.Abp.ReactiveUi</AssemblyName>
+    <RootNamespace>Byz.Abp.ReactiveUi</RootNamespace>
+    <ProjectGuid>{93f8efa9-5916-493e-b8cc-7e5ee6933934}</ProjectGuid>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ReactiveUI" />
+    <PackageReference Include="ReactiveUI.Fody" />
+    <PackageReference Include="Splat" />
+    <PackageReference Include="Splat.Autofac" />
+    <PackageReference Include="System.Reactive" />
+    <PackageReference Include="System.Reactive.Core" />
+    <PackageReference Include="System.Reactive.Linq" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Autofac" />
+    <PackageReference Include="Volo.Abp.Core" />
+  </ItemGroup>
+</Project>

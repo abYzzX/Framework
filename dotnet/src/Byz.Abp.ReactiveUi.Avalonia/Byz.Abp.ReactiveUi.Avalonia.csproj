@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../common.props"/>
+
+  <PropertyGroup>
+    <AssemblyName>abYzzX.Abp.Avalonia.ReactiveUi</AssemblyName>
+    <RootNamespace>Byz.Abp.ReactiveUi</RootNamespace>
+    <ProjectGuid>{9b813bda-b74f-4cda-b475-cfd98b56aeb4}</ProjectGuid>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" />
+    <PackageReference Include="Avalonia.ReactiveUI" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Autofac" />
+    <PackageReference Include="Volo.Abp.Core" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Byz.Abp.ReactiveUi\Byz.Abp.ReactiveUi.csproj" />
+  </ItemGroup>
+
+</Project>

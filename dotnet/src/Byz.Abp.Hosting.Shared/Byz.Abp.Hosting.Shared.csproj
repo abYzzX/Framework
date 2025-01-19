@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../common.props"/>
+  
+  <PropertyGroup>
+    <AssemblyName>abYzzX.Abp.Hosting.Shared</AssemblyName>
+    <RootNamespace>Byz.Abp.Hosting</RootNamespace>
+    <ProjectGuid>{3a8de774-ab4a-413c-8de1-3a008bc72b2e}</ProjectGuid>
+    <IsPackable>true</IsPackable>
+    <PackageTags>ABP Hosting Serilog</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+    <PackageReference Include="Serilog.Sinks.File" />
+    <PackageReference Include="Serilog.Sinks.Async" />
+    <PackageReference Include="Serilog.Sinks.Console" />
+    <PackageReference Include="Serilog.Enrichers.Thread" />
+    <PackageReference Include="Serilog.Enrichers.Environment" />
+    <PackageReference Include="Serilog.Extensions.Logging" />
+    <PackageReference Include="Serilog.Extensions.Hosting" />
+    <PackageReference Include="Serilog.Settings.Configuration" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Autofac" />
+    <PackageReference Include="Volo.Abp.Data" />
+  </ItemGroup>  
+  
+</Project>
