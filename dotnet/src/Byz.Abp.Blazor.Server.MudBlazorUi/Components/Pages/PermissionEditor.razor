@@ -1,0 +1,33 @@
+﻿@using Volo.Abp.AspNetCore.Components
+@using Volo.Abp.AspNetCore.Components.Web.Configuration
+@using Volo.Abp.PermissionManagement
+@inject IPermissionAppService PermissionAppService
+@inject IDialogService DialogService
+@inject ICurrentApplicationConfigurationCacheResetService CacheResetService
+@inherits AbpComponentBase
+
+<MudDialog>
+  <DialogContent>
+    <MudTabs Rounded="true" Position="Position.Top" Elevation="3" Style="height: 600px;">
+      @foreach (var group in Groups)
+      {
+        <MudTabPanel Text="@group.Dto.DisplayName">
+          <MudContainer Elevation="3" Class="mt-5">
+            <MudTreeView T="PermissionGrantInfoDto" Items="@group.Children" Ripple="true"
+                         SelectionMode="SelectionMode.MultiSelection"
+                         CheckBoxColor="Color.Secondary" Hover="true">
+              <ItemTemplate>
+                <MudTreeViewItem T="PermissionGrantInfoDto" Items="@context.Children" Value="@context.Value"
+                                 Text="@context.Text" @bind-Selected="@context.Value.IsGranted"></MudTreeViewItem>
+              </ItemTemplate>
+            </MudTreeView>
+          </MudContainer>
+        </MudTabPanel>
+      }
+    </MudTabs>
+  </DialogContent>
+  <DialogActions>
+    <MudButton OnClick="@(() => MudDialog.Close())">@L["Cancel"]</MudButton>
+    <MudButton Color="Color.Primary" OnClick="@(async _ => await SaveAsync())">@L["Save"]</MudButton>
+  </DialogActions>
+</MudDialog>

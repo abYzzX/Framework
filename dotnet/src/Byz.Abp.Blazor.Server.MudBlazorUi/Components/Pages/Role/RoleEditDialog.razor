@@ -1,0 +1,25 @@
+﻿@using Volo.Abp.Identity
+@using Volo.Abp.Identity.Localization
+@inherits AbpMudBlazorDialog<IdentityRoleCreateOrUpdateDtoBase, Guid>
+
+<MudDialog Style="min-width: 50%;">
+  <DialogContent>
+    <MudStack Class="m-5">
+      <MudTextField T="string" @bind-Value="@Model.Name" Label="@L["DisplayName:RoleName"]"
+                    Required="true"></MudTextField>
+      <MudCheckBox T="bool" @bind-Value="@Model.IsDefault">@L["DisplayName:IsDefault"]</MudCheckBox>
+      <MudCheckBox T="bool" @bind-Value="@Model.IsPublic">@L["DisplayName:IsPublic"]</MudCheckBox>
+    </MudStack>
+  </DialogContent>
+  <DialogActions>
+    <MudButton OnClick="@Cancel">Cancel</MudButton>
+    <MudButton Color="Color.Primary" OnClick="@(async () => await Submit())">Ok</MudButton>
+  </DialogActions>
+</MudDialog>
+
+@code {
+  public RoleEditDialog()
+  {
+    LocalizationResource = typeof(IdentityResource);
+  }
+}

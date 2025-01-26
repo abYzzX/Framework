@@ -1,0 +1,65 @@
+﻿@page "/identity/roles"
+@using Microsoft.AspNetCore.Authorization
+@using Volo.Abp.Identity
+@attribute [Authorize(IdentityPermissions.Roles.Default)]
+@inherits AbpCrudPageBase<IIdentityRoleAppService, IdentityRoleDto, Guid, GetIdentityRolesInput, IdentityRoleCreateDto, IdentityRoleUpdateDto>
+
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-4">
+  <MudDataGrid @ref="Grid" T="IdentityRoleDto" SortMode="SortMode.Multiple"
+               Height="100%" Virtualize="true" VirtualizeServerData="LoadDataAsync"
+               Filterable="true" FilterMode="DataGridFilterMode.ColumnFilterMenu">
+    <ToolBarContent>
+      <MudText Typo="Typo.h6">@L["Roles"]</MudText>
+      <MudSpacer/>
+      @if (HasCreatePermission)
+      {
+        <MudButton StartIcon="@Icons.Material.Filled.Add" Color="Color.Success"
+                   OnClick="@(async () => await OpenCreateDialogAsync<RoleEditDialog>(@L["NewRole"]))">
+          @L["NewRole"]
+        </MudButton>
+      }
+    </ToolBarContent>
+
+    <Columns>
+      <PropertyColumn Property="x => x.Name" Title="@L["DisplayName:RoleName"]"></PropertyColumn>
+      <TemplateColumn Title="@L["Status"]">
+        <CellTemplate>
+          <MudStack Row="true" AlignItems="AlignItems.Center">
+            @if (context.Item.IsDefault)
+            {
+              <MudChip T="string" Color="Color.Success" Size="Size.Small">@L["DisplayName:IsDefault"]</MudChip>
+            }
+            @if (context.Item.IsPublic)
+            {
+              <MudChip T="string" Color="Color.Info" Size="Size.Small">@L["DisplayName:IsPublic"]</MudChip>
+            }
+          </MudStack>
+        </CellTemplate>
+      </TemplateColumn>
+      <TemplateColumn CellClass="d-flex justify-end m-5">
+        <CellTemplate>
+          @if ((context.Item.Name != "admin" || CurrentUser.UserName == "admin") && HasUpdatePermission)
+          {
+            <MudIconButton Size="Size.Medium" Icon="@Icons.Material.Outlined.Edit" Title="@L["Edit"]"
+                           OnClick="@(async () => await OpenEditDialogAsync<RoleEditDialog>(@L["Edit"], context.Item))"/>
+          }
+
+          @if ((context.Item.Name != "admin" || CurrentUser.UserName == "admin") && HasManagePermissionsPermission)
+          {
+            <MudIconButton Icon="@Icons.Material.Filled.Key" Title="@L["Permissions"]" Color="Color.Warning"
+                           OnClick="@(async () => await ShowPermissionDialogAsync(context.Item))"/>
+            @* Click="@(async () => await OpenAssignPermissionDialog(context))" /> *@
+          }
+          @if (context.Item.Name != "admin" && HasDeletePermission)
+          {
+            <MudIconButton Icon="@Icons.Material.Outlined.Delete" Title="@L["Delete"]" Color="Color.Error"
+                           OnClick="@(async _ => await OpenDeleteConfirmDialogAsync(context.Item.Id, L["Delete"], L["RoleDeletionConfirmationMessage", context.Item.Name]))"/>
+          }
+        </CellTemplate>
+      </TemplateColumn>
+    </Columns>
+    <PagerContent>
+      <MudDataGridPager T="IdentityRoleDto"/>
+    </PagerContent>
+  </MudDataGrid>
+</MudContainer>

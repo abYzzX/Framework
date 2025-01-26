@@ -1,0 +1,22 @@
+{
+  "culture": "en",
+  "texts": {
+    "GivenTenantIsNotExist": "Given tenant doesn't exist: {0}",
+    "GivenTenantIsNotAvailable": "Given tenant isn't available: {0}",
+    "Tenant": "Tenant",
+    "Switch": "switch",
+    "Name": "Name",
+    "SwitchTenantHint": "Leave the name field blank to switch to the host side.",
+    "SwitchTenant": "Switch tenant",
+    "NotSelected": "Not selected",
+    "Permission:GroupName": "Mud Blazor",
+    "Permission:AuditLogs": "AuditLogs",
+    "LoginWelcome": "Welcome",
+    "LoginSubMessage": "Fill in your login credentials to proceed.",
+    "Login": "Login",
+    "Username": "Username",
+    "Password": "Password",
+    "RememberMe": "Remember me",
+    "LoginFailed:Unknown": "Unknown username or wrong password"
+  }
+}

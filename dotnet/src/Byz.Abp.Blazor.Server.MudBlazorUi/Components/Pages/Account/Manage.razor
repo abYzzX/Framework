@@ -1,0 +1,149 @@
+﻿@page "/account/manage"
+@using Abp.MudBlazorUi.Models
+@using Volo.Abp.Account
+@using Volo.Abp.Account.Localization
+@using Volo.Abp.AspNetCore.Components
+@using Volo.Abp.Identity
+@inject IProfileAppService ProfileAppService
+@inject NavigationManager NavigationManager
+@inherits AbpComponentBase
+
+<MudContainer MaxWidth="MaxWidth.Small" Class="mt-10">
+  <MudTabs Elevation="2" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6" Position="Position.Top">
+    <MudTabPanel Text="@L["ProfileTab:PersonalInfo"]">
+      <MudForm>
+        <MudTextField T="string" Variant="Variant.Filled" Required="true" Label="@L["DisplayName:UserName"]"
+                      MaxLength="@IdentityUserConsts.MaxUserNameLength"
+                      @bind-Value="@PersonalInfoModel.UserName"></MudTextField>
+        <MudTextField T="string" Variant="Variant.Filled" Class="mt-4" Label="@L["DisplayName:Name"]"
+                      MaxLength="@IdentityUserConsts.MaxNameLength"
+                      @bind-Value="@PersonalInfoModel.Name"></MudTextField>
+        <MudTextField T="string" Variant="Variant.Filled" Class="mt-4" Label="@L["DisplayName:Surname"]"
+                      MaxLength="@IdentityUserConsts.MaxSurnameLength"
+                      @bind-Value="@PersonalInfoModel.Surname"></MudTextField>
+        <MudTextField T="string" Variant="Variant.Filled" Class="mt-4" Required="true" Label="@L["DisplayName:Email"]"
+                      InputType="InputType.Email" @bind-Value="@PersonalInfoModel.Email"
+                      MaxLength="@IdentityUserConsts.MaxEmailLength"></MudTextField>
+        <MudTextField T="string" Variant="Variant.Filled" Class="mt-4" Label="@L["DisplayName:PhoneNumber"]"
+                      MaxLength="@IdentityUserConsts.MaxPhoneNumberLength"
+                      @bind-Value="@PersonalInfoModel.PhoneNumber"></MudTextField>
+        <MudButton Class="mt-5" Variant="Variant.Filled" OnClick="@(async _ => await UpdatePersonalInfoAsync())">@L["Save"]</MudButton>
+      </MudForm>
+    </MudTabPanel>
+    <MudTabPanel Text="@L["ProfileTab:Password"]">
+      <MudForm Class="mt-0">
+        <MudTextField T="string" Variant="Variant.Filled" Class="mt-4" Required="true"
+                      Label="@L["DisplayName:CurrentPassword"]" InputType="InputType.Password"
+                      MaxLength="@IdentityUserConsts.MaxPasswordLength"
+                      @bind-Value="@ChangePasswordModel.CurrentPassword"
+                      Hidden="@ChangePasswordModel.HideOldPasswordInput"></MudTextField>
+        <MudTextField T="string" Variant="Variant.Filled" Class="mt-4" Required="true"
+                      Label="@L["DisplayName:NewPassword"]" InputType="InputType.Password"
+                      MaxLength="@IdentityUserConsts.MaxPasswordLength"
+                      @bind-Value="@ChangePasswordModel.NewPassword"></MudTextField>
+        <MudTextField T="string" Variant="Variant.Filled" Class="mt-4" Required="true"
+                      Label="@L["DisplayName:NewPasswordConfirm"]" InputType="InputType.Password"
+                      MaxLength="@IdentityUserConsts.MaxPasswordLength"
+                      @bind-Value="@ChangePasswordModel.NewPasswordConfirm"></MudTextField>
+        <MudButton Class="mt-5" Variant="Variant.Filled" Color="Color.Warning"
+                   OnClick="@(async _ => await ChangePasswordAsync())">@L["Save"]</MudButton>
+      </MudForm>
+    </MudTabPanel>
+  </MudTabs>
+</MudContainer>
+
+@code {
+  ChangePasswordModel ChangePasswordModel = new();
+  PersonalInfoModel PersonalInfoModel = new();
+
+  public Manage()
+  {
+    LocalizationResource = typeof(AccountResource);
+  }
+
+  protected override async Task OnInitializedAsync()
+  {
+    var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri);
+    var fragment = uri.Fragment.TrimStart('#');
+
+    // if (!string.IsNullOrEmpty(fragment))
+    // {
+    //   foreach (var k in _tabs.Keys.Where(k => _tabs[k].Equals(fragment, StringComparison.OrdinalIgnoreCase)))
+    //   {
+    //     _selectedIndex = k;
+    //     break;
+    //   }
+    // }
+
+    await LoadUserInformation();
+  }
+
+  protected async Task LoadUserInformation()
+  {
+    var user = await ProfileAppService.GetAsync();
+
+    ChangePasswordModel = new ChangePasswordModel
+    {
+      HideOldPasswordInput = !user.HasPassword
+    };
+
+    PersonalInfoModel = ObjectMapper.Map<ProfileDto, PersonalInfoModel>(user);
+  }
+
+  async Task ChangePasswordAsync()
+  {
+    if (string.IsNullOrWhiteSpace(ChangePasswordModel.CurrentPassword))
+    {
+      return;
+    }
+
+    if (ChangePasswordModel.NewPassword != ChangePasswordModel.NewPasswordConfirm)
+    {
+      await Message.Error(L["NewPasswordConfirmFailed"]);
+      return;
+    }
+
+    if (ChangePasswordModel.CurrentPassword == ChangePasswordModel.NewPassword)
+    {
+      await Message.Error(L["NewPasswordSameAsOld"]);
+      return;
+    }
+
+    try
+    {
+      await ProfileAppService.ChangePasswordAsync(
+        new ChangePasswordInput
+        {
+          CurrentPassword = ChangePasswordModel.CurrentPassword,
+          NewPassword = ChangePasswordModel.NewPassword
+        }
+      );
+
+      ChangePasswordModel.Clear();
+      await Message.Success(L["PasswordChanged"]);
+      NavigationManager.Refresh();
+    }
+    catch (Exception ex)
+    {
+      await HandleErrorAsync(ex);
+    }
+  }
+
+  async Task UpdatePersonalInfoAsync()
+  {
+    try
+    {
+      await ProfileAppService.UpdateAsync(
+        ObjectMapper.Map<PersonalInfoModel, UpdateProfileDto>(PersonalInfoModel)
+      );
+
+      await Message.Success(L["PersonalSettingsSaved"]);
+      NavigationManager.Refresh();
+    }
+    catch (Exception ex)
+    {
+      await HandleErrorAsync(ex);
+    }
+  }
+
+}

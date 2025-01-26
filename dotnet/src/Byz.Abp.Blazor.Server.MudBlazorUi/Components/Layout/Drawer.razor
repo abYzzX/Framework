@@ -1,0 +1,82 @@
+﻿@inherits AbpComponentBase
+@using Abp.MudBlazorUi.Services
+@using Microsoft.Extensions.Options
+@using Volo.Abp.AspNetCore.Components
+@using Volo.Abp.Ui.Branding
+@using Volo.Abp.UI.Navigation
+@inject IMenuManager MenuManager
+@inject IBrandingProvider BrandingProvider
+@inject IOptions<AbpMudBlazorUiOptions> Options
+@inject IMudBlazorUiIconResolver I;
+
+<MudDrawer @bind-Open="@IsDrawerOpen" 
+           Elevation="1" 
+           ClipMode="DrawerClipMode.Docked">
+    <MudDrawerHeader Style="padding: 16px 12px 16px 12px;">
+        @if (!string.IsNullOrEmpty(BrandingProvider.LogoUrl))
+        {
+            <MudImage Src="@BrandingProvider.LogoUrl" Width="32" Height="32"></MudImage>
+        }
+        <MudText Typo="Typo.h5" Hidden="@ShowHeaderText"
+                 Style="overflow: hidden;">@BrandingProvider.AppName</MudText>
+    </MudDrawerHeader>
+    <MudNavMenu Style="display: flex; flex-direction: column; height: 100%;">
+        @foreach (var menu in _applicationMenu?.Items ?? [])
+        {
+            @BuildMenuTree(menu)
+        }
+    </MudNavMenu>
+</MudDrawer>
+
+@code {
+    private ApplicationMenu _applicationMenu;
+
+    [Parameter]
+    public bool IsDrawerOpen { get; set; }
+
+    [Parameter]
+    public bool IsThemeManagerOpen { get; set; }
+
+    [Parameter]
+    public bool IsDarkMode { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> DarkModeToggled { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> ThemeManagerToggled { get; set; }
+
+    private bool ShowHeaderText
+    {
+        get => !IsDrawerOpen;
+    }
+
+    private string BottomNavBarMargin
+    {
+        get => IsDrawerOpen ? "margin: auto 12px 16px 12px;" : "margin: auto 4px 16px 4px;";
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        _applicationMenu = await MenuManager.GetMainMenuAsync();
+    }
+
+    RenderFragment BuildMenuTree(ApplicationMenuItem menuItem) =>
+        __builder =>
+        {
+            if (menuItem.IsLeaf)
+            {
+                <MudNavLink Match="NavLinkMatch.Prefix" Icon="@I[menuItem.Icon]" Href="@menuItem.Url">@L[menuItem.DisplayName]</MudNavLink>
+            }
+            else
+            {
+                <MudNavGroup Title="@L[menuItem.DisplayName]" Icon="@I[menuItem.Icon]" Expanded="false">
+                    @foreach (var child in menuItem.Items ?? [])
+                    {
+                        @BuildMenuTree(child);
+                    }
+                </MudNavGroup>
+            }
+        };
+
+}
