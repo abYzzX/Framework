@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <RootNamespace>Abp.MudBlazorUi</RootNamespace>
+    <PackageId>abYzzX.Abp.Blazor.Server.MusBlazor</PackageId>
+    <ProjectGuid>{5b33adf3-773f-420b-9f6a-dfbb154b77ed}</ProjectGuid>
+    <AssemblyName>abYzzX.Abp.Blazor.Server.MudBlazorUi</AssemblyName>
+    <IsPackable>true</IsPackable>
+    <PackageTags>MudBlazor Blazor Ui</PackageTags>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="wwwroot\bootstrap\bootstrap.min.css.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AspNetCore.Components.Server" />
+    <PackageReference Include="Volo.Abp.Autofac" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore" />
+    <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore" />
+    <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore" />
+    <PackageReference Include="Volo.Abp.TenantManagement.EntityFrameworkCore" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Application" />
+    <PackageReference Include="Volo.Abp.Identity.EntityFrameworkCore" />
+    <PackageReference Include="Volo.Abp.Account.Web.OpenIddict" />
+    <PackageReference Include="MudBlazor" />
+    <PackageReference Include="MudBlazor.ThemeManager" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\UI\*.json" />
+    <Content Remove="Localization\UI\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Components\Pages\Account\Login.razor" />
+    <UpToDateCheckInput Remove="Components\Pages\Account\Manage.razor" />
+    <UpToDateCheckInput Remove="Components\Pages\Account\TenantSwitchDialog.razor" />
+    <UpToDateCheckInput Remove="Components\Pages\Role\Create.razor" />
+    <UpToDateCheckInput Remove="Components\Pages\Role\Edit.razor" />
+    <UpToDateCheckInput Remove="Components\Pages\Role\List.razor" />
+    <UpToDateCheckInput Remove="Components\Pages\Role\Permission.razor" />
+    <UpToDateCheckInput Remove="Components\Shared\BooleanIcon.razor" />
+    <UpToDateCheckInput Remove="Components\Shared\CustomErrorBoundary.razor" />
+    <UpToDateCheckInput Remove="Components\Shared\Devider.razor" />
+    <UpToDateCheckInput Remove="Components\Shared\Error404.razor" />
+    <UpToDateCheckInput Remove="Components\Shared\LanguageSwitch.razor" />
+    <UpToDateCheckInput Remove="Components\Shared\SearchTextBox.razor" />
+  </ItemGroup>
+
+</Project>

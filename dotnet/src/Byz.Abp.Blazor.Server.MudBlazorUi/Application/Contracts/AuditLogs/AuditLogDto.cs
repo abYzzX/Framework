@@ -1,0 +1,27 @@
+﻿using System;
+using Volo.Abp.Application.Dtos;
+
+namespace Abp.MudBlazorUi.Application.Contracts.AuditLogs;
+
+public class AuditLogDto : EntityDto<Guid>
+{
+    public string? UserName { get; set; }
+
+    public string? TenantName { get; set; }
+
+    public DateTime ExecutionTime { get; set; }
+
+    public int ExecutionDuration { get; set; }
+
+    public string? ClientIpAddress { get; set; }
+
+    public string? BrowserInfo { get; set; }
+
+    public string? HttpMethod { get; set; }
+
+    public string? Url { get; set; }
+
+    public string? Exceptions { get; set; }
+
+    public int? HttpStatusCode { get; set; }
+}

@@ -12,6 +12,5 @@ public class AvaloniaAppModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
-        Console.WriteLine("Configure AvaloniaAppModule");
     }
 }

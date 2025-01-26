@@ -1,0 +1,60 @@
+﻿@page "/identity/users"
+@using Microsoft.AspNetCore.Authorization
+@using Volo.Abp.Identity
+@attribute [Authorize(IdentityPermissions.Users.Default)]
+@inherits AbpCrudPageBase<IIdentityUserAppService, IdentityUserDto, Guid, GetIdentityUsersInput, IdentityUserCreateDto, IdentityUserUpdateDto>
+
+<MudContainer Class="mt-4" MaxWidth="MaxWidth.ExtraLarge">
+  <MudDataGrid @ref="Grid" T="IdentityUserDto" SortMode="SortMode.Multiple"
+               Height="100%" Virtualize="true" VirtualizeServerData="LoadDataAsync"
+               Filterable="true" FilterMode="DataGridFilterMode.ColumnFilterMenu">
+    <ToolBarContent>
+      <MudText Typo="Typo.h6">@L["Users"]</MudText>
+      <MudSpacer/>
+      @if (HasCreatePermission)
+      {
+        <MudButton StartIcon="@Icons.Material.Filled.Add" Color="Color.Success"
+                   OnClick="@(async () => await OpenCreateDialogAsync<UserEditDialog>(L["NewUser"]))">
+          @L["NewUser"]
+        </MudButton>
+      }
+    </ToolBarContent>
+    <Columns>
+      <PropertyColumn Property="x => x.UserName" Title="@L["DisplayName:UserName"]" StickyLeft="true"></PropertyColumn>
+      <PropertyColumn Property="x => x.Email" Title="@L["DisplayName:Email"]"></PropertyColumn>
+      <PropertyColumn Property="x => x.PhoneNumber" Title="@L["DisplayName:PhoneNumber"]"></PropertyColumn>
+      <TemplateColumn Title="@L["DisplayName:IsActive"]">
+        <CellTemplate>
+          <MudChip T="string" Variant="@(context.Item.IsActive ? Variant.Filled : Variant.Outlined)"
+                   Color="@(context.Item.IsActive ? Color.Success : Color.Dark)">@L["DisplayName:IsActive"]</MudChip>
+        </CellTemplate>
+      </TemplateColumn>
+      <TemplateColumn Title="@L["DisplayName:LockoutEnabled"]">
+        <CellTemplate>
+          <MudChip T="string" Variant="@(context.Item.LockoutEnabled ? Variant.Filled : Variant.Outlined)"
+                   Color="@(context.Item.IsActive ? Color.Error : Color.Dark)">@L["DisplayName:LockoutEnabled"]</MudChip>
+        </CellTemplate>
+      </TemplateColumn>
+      <PropertyColumn Property="x => x.CreationTime" Title="@L["CreationTime"]"></PropertyColumn>
+      <TemplateColumn CellClass="d-flex justify-end m-5">
+        <CellTemplate>
+          @if ((context.Item.Name != "admin" || CurrentUser.UserName == "admin") && HasUpdatePermission)
+          {
+            <MudIconButton Size="Size.Medium" Icon="@Icons.Material.Outlined.Edit" Title="@L["Edit"]"
+                           OnClick="@(async () => await OpenEditDialogAsync<UserEditDialog>(@L["Edit"], context.Item))"/>
+          }
+          @if ((context.Item.Name != "admin" || CurrentUser.UserName == "admin") && HasManagePermissionsPermission)
+          {
+            <MudIconButton Icon="@Icons.Material.Filled.Key" Title="@L["Permissions"]" Color="Color.Warning"
+                           OnClick="@(async () => await ShowPermissionDialogAsync(context.Item))"/>
+          }          
+          @if (context.Item.Name != "admin" && HasDeletePermission)
+          {
+            <MudIconButton Icon="@Icons.Material.Outlined.Delete" Title="@L["Delete"]" Color="Color.Error"
+                           OnClick="@(async _ => await OpenDeleteConfirmDialogAsync(context.Item.Id, L["Delete"], L["RoleDeletionConfirmationMessage", context.Item.Name]))"/>
+          }
+        </CellTemplate>
+      </TemplateColumn>      
+    </Columns>
+  </MudDataGrid>
+</MudContainer>

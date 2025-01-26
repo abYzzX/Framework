@@ -51,6 +51,10 @@
     <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="$(MsExtensionsVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Options" Version="$(MsExtensionsVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="$(MsExtensionsVersion)" />
+    <!-- MudBlazor -->
+    <PackageVersion Include="MudBlazor" Version="8.0.0" />
+    <PackageVersion Include="MudBlazor.ThemeManager" Version="3.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Embedded" Version="9.0.0" />
     <!-- ReactiveUi -->
     <PackageVersion Include="ReactiveUI" Version="20.1.63" />
     <PackageVersion Include="ReactiveUI.Events" Version="15.1.1" />
@@ -69,9 +73,18 @@
     <PackageVersion Include="Splat" Version="15.2.22" />
     <PackageVersion Include="Splat.Autofac" Version="15.2.22" />
     <!-- Volo.Abp -->
+    <PackageVersion Include="Volo.Abp.AspNetCore.Components.Server" Version="$(AbpVersion)" />
     <PackageVersion Include="Volo.Abp.Autofac" Version="$(AbpVersion)" />
     <PackageVersion Include="Volo.Abp.Core" Version="$(AbpVersion)" />
     <PackageVersion Include="Volo.Abp.Data" Version="$(AbpVersion)" />
     <PackageVersion Include="Volo.Abp.Localization" Version="$(AbpVersion)" />
+    <PackageVersion Include="Volo.Abp.PermissionManagement.EntityFrameworkCore" Version="$(AbpVersion)" />
+    <PackageVersion Include="Volo.Abp.SettingManagement.EntityFrameworkCore" Version="$(AbpVersion)" />
+    <PackageVersion Include="Volo.Abp.AuditLogging.EntityFrameworkCore" Version="$(AbpVersion)" />
+    <PackageVersion Include="Volo.Abp.TenantManagement.EntityFrameworkCore" Version="$(AbpVersion)" />
+    <PackageVersion Include="Volo.Abp.TenantManagement.Application" Version="$(AbpVersion)" />
+    <PackageVersion Include="Volo.Abp.Identity.EntityFrameworkCore" Version="$(AbpVersion)" />
+    <PackageVersion Include="Volo.Abp.Account.Web.OpenIddict" Version="$(AbpVersion)" />
   </ItemGroup>
 </Project>
+

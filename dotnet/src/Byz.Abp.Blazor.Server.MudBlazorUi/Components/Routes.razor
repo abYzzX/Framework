@@ -1,0 +1,40 @@
+﻿@using Abp.MudBlazorUi.Components.Layout
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.Extensions.Options
+@inject NavigationManager Nav
+@inject IOptions<AbpMudBlazorUiOptions> Options
+
+<MudPopoverProvider/>
+<MudDialogProvider/>
+<MudSnackbarProvider/>
+
+<CascadingAuthenticationState>
+    <Router AppAssembly="typeof(App).Assembly" AdditionalAssemblies="@Options.Value.RouterAdditionalAssemblies">
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+                <NotAuthorized>
+                    @if ((context.User?.Identity?.IsAuthenticated ?? false) == false)
+                    {
+                        Nav.NavigateTo("/Login", forceLoad: true);
+                    }
+                    else
+                    {
+                        <MudText Typo="Typo.h5">
+                            You are not authorized to access this resource!
+                        </MudText>
+                    }
+                </NotAuthorized>
+            </AuthorizeRouteView>
+        </Found>
+        <NotFound>
+            <LayoutView Layout="typeof(MainLayout)">
+                <MudText Typo="Typo.h1" TagName="TagName.H1">
+                    Page not found
+                </MudText>
+                <MudText Typo="Typo.h1" TagName="TagName.H1">
+                    Sorry, but there's nothing here!
+                </MudText>
+            </LayoutView>
+        </NotFound>
+    </Router>
+</CascadingAuthenticationState>

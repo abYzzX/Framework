@@ -1,0 +1,22 @@
+﻿@page "/404"
+@using Volo.Abp.AspNetCore.Components
+@using Volo.Abp.ExceptionHandling.Localization
+@inherits AbpComponentBase
+
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-5">
+  <MudText Typo="Typo.h3" Align="Align.Center">
+    @L["404Message"]
+  </MudText>
+  <MudText Typo="Typo.subtitle1" Class="mt-4" Align="Align.Center">
+    @L["DefaultErrorMessage404Detail"]
+  </MudText>
+</MudContainer>
+
+@code {
+
+  public Error404()
+  {
+    LocalizationResource = typeof(AbpExceptionHandlingResource);
+  }
+
+}

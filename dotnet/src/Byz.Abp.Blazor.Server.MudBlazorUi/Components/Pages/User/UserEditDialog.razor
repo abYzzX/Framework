@@ -1,0 +1,81 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@using Volo.Abp.Identity
+@using Volo.Abp.Identity.Localization
+@inject IIdentityUserAppService UserAppService
+@inject IIdentityRoleAppService RoleAppService
+@inherits AbpMudBlazorDialog<IdentityUserCreateOrUpdateDtoBase, Guid>
+
+<MudDialog Style="min-width: 50%;">
+  <DialogContent>
+    <MudStack Class="m-5">
+      <MudTextField T="string" @bind-Value="@Model.UserName" Required="true"
+                    Label="@L["DisplayName:UserName"]"></MudTextField>
+      <MudTextField T="string" @bind-Value="@Model.Email" Label="@L["DisplayName:Email"]" Required="true"
+                    InputType="InputType.Email"></MudTextField>
+      @if (Model is IdentityUserCreateDto createDto)
+      {
+        <MudTextField T="string" @bind-Value="@createDto.Password" Label="@L["DisplayName:Password"]" Required="true"
+                      InputType="InputType.Password"></MudTextField>
+      }
+      @if (HasManagePermissionsPermission)
+      {
+        <MudSelect @ref="RoleSelect" T="string" MultiSelection="true" Label="@L["Roles"]">
+          @foreach (var availableRoleName in AvailableRoles)
+          {
+            <MudSelectItem T="string" Value="@availableRoleName">
+              <MudText>@availableRoleName</MudText>
+            </MudSelectItem>
+          }
+        </MudSelect>
+      }
+      <MudStack Row="true">
+        <MudCheckBox T="bool" @bind-Value="@Model.IsActive">@L["DisplayName:IsActive"]</MudCheckBox>
+        <MudCheckBox T="bool" @bind-Value="@Model.LockoutEnabled">@L["DisplayName:LockoutEnabled"]</MudCheckBox>
+      </MudStack>
+      <MudDivider Light="true" Class="mt-2 mb-2"></MudDivider>
+      <MudTextField T="string" @bind-Value="@Model.Name" Label="@L["DisplayName:Name"]"></MudTextField>
+      <MudTextField T="string" @bind-Value="@Model.Surname" Label="@L["DisplayName:Surname"]"></MudTextField>
+      <MudTextField T="string" @bind-Value="@Model.PhoneNumber" Label="@L["DisplayName:PhoneNumber"]"
+                    InputType="InputType.Telephone"></MudTextField>
+    </MudStack>
+  </DialogContent>
+  <DialogActions>
+    <MudButton OnClick="@Cancel">Cancel</MudButton>
+    <MudButton Color="Color.Primary" OnClick="@(async () => await Submit())">Ok</MudButton>
+  </DialogActions>
+</MudDialog>
+
+@code {
+
+  private MudSelect<string> RoleSelect { get; set; }
+  
+  private IEnumerable<string> SelectedRoleNames { get; set; } = [];
+  private IReadOnlyList<string> AvailableRoles { get; set; } = [];
+  protected bool HasManagePermissionsPermission { get; set; }
+
+  public UserEditDialog()
+  {
+    LocalizationResource = typeof(IdentityResource);
+  }
+
+  protected override async Task OnInitializedAsync()
+  {
+    HasManagePermissionsPermission = await AuthorizationService.IsGrantedAsync(
+      IdentityPermissions.Users.ManagePermissions
+    );
+
+    AvailableRoles = (await RoleAppService.GetAllListAsync()).Items.Select(x => x.Name).ToList();
+
+    if (Model is IdentityUserUpdateDto)
+    {
+      RoleSelect.SelectedValues = 
+            (await UserAppService.GetRolesAsync(UpdateId)).Items?.Select(r => r.Name).ToArray() ?? [];
+    }
+  }
+
+  protected override async Task Submit()
+  {
+    Model.RoleNames = RoleSelect.SelectedValues?.ToArray() ?? [];
+    await base.Submit();
+  }
+}

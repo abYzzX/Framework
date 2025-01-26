@@ -1,0 +1,78 @@
+﻿@inherits AbpComponentBase
+@using Microsoft.Extensions.Options
+@using Volo.Abp.AspNetCore.Components
+@using Abp.MudBlazorUi.Components.Shared
+@inject IOptions<AbpMudBlazorUiOptions> Options
+
+<MudAppBar Elevation="3">
+    <MudToggleIconButton Toggled="@IsDrawerOpen"
+                         ToggledChanged="IsDrawerOpenChanged"
+                         ToggledIcon="@Icons.Material.Outlined.Menu"
+                         Icon="@Icons.Material.Filled.Menu"
+                         Color="Color.Inherit"
+                         Edge="Edge.Start">
+    </MudToggleIconButton>
+    <MudSpacer/>
+    @if (Options.Value.AppBar.ShowLanguageMenu)
+    {
+        <LanguageMenu></LanguageMenu>
+    }
+    @if (Options.Value.AppBar.ShowDarkModeToggle)
+    {
+        <MudToggleIconButton Toggled="@IsDarkModeEnabled"
+                             ToggledChanged="IsDarkModeChanged"
+                             Icon="@Icons.Material.Filled.DarkMode"
+                             Color="Color.Inherit"
+                             ToggledIcon="@Icons.Material.Filled.LightMode"
+                             ToggledColor="Color.Inherit">
+        </MudToggleIconButton>
+    }
+    @if (Options.Value.AppBar.ShowThemeSettings)
+    {
+        <MudToggleIconButton Toggled="@IsThemeManagerOpen"
+                             ToggledChanged="IsThemeManagerOpenChanged"
+                             Icon="@Icons.Material.Outlined.Settings"
+                             Color="Color.Inherit"
+                             ToggledIcon="@Icons.Material.Outlined.Settings"
+                             ToggledColor="Color.Inherit">
+        </MudToggleIconButton>
+    }
+    @if (CurrentUser is { IsAuthenticated: true })
+    {
+        <MudMenu>
+            <ActivatorContent>
+                <MudAvatar Variant="Variant.Text">@CurrentUser.UserName.ToUpper()[0]</MudAvatar>
+            </ActivatorContent>
+            <ChildContent>
+                <MudMenuItem Label="@L["MyAccount"]" Icon="@Icons.Material.Filled.PermIdentity" Href="/account/manage"></MudMenuItem>
+                <MudMenuItem Label="@L["Logout"]" Icon="@Icons.Material.Filled.Logout" Href="/account/logout"></MudMenuItem>
+            </ChildContent>
+        </MudMenu>
+    }
+    else
+    {
+        <MudIconButton Icon="@Icons.Material.Filled.Login"
+                       Href="/login"/>
+    }
+</MudAppBar>
+
+@code
+{
+    [Parameter]
+    public bool IsDrawerOpen { get; set; }
+
+    [Parameter]
+    public bool IsDarkModeEnabled { get; set; }
+
+    [Parameter]
+    public bool IsThemeManagerOpen { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> IsDrawerOpenChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> IsDarkModeChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> IsThemeManagerOpenChanged { get; set; }
+}

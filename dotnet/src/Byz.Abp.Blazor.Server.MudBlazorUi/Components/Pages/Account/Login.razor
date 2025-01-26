@@ -1,0 +1,85 @@
+﻿@page "/login"
+@using Abp.MudBlazorUi.Components.Layout
+@using Abp.MudBlazorUi.Localization
+@using Microsoft.Extensions.Localization
+@using Microsoft.Extensions.Options
+@using Volo.Abp.AspNetCore.Components
+@using Volo.Abp.Ui.Branding
+@layout LoginLayout
+@inject IBrandingProvider BrandingProvider
+@inject IStringLocalizer<AbpMudBlazorUiResource> TL
+@inject IOptions<AbpMudBlazorUiOptions> Options
+@inherits AbpComponentBase
+
+<MudContainer class="d-flex justify-center align-center" style="height: 100vh">
+    <MudPaper Elevation="2" Class="rounded-start-4 rounded-end-0" MinHeight="30vh"
+              MinWidth="30vh" Style="@LoginPaperStyle">
+        <MudContainer>
+            <div class="d-flex align-center mt-5 mb-xl-5">
+                <MudImage Width="48" Height="48" Src="@BrandingProvider.LogoUrl"></MudImage>
+                <MudText Typo="Typo.h5" Class="ms-1">@BrandingProvider.AppName</MudText>
+            </div>
+            <div class="mt-lg-5 pt-lg-5">
+                <MudText Typo="Typo.h4" Class="ms-1">@TL["LoginWelcome"]</MudText>
+                <MudText Typo="Typo.body2" Class="ms-1 mt-2">@TL["LoginSubMessage"]</MudText>
+            </div>
+        </MudContainer>
+    </MudPaper>
+    <MudPaper MinHeight="30vh" MinWidth="35vh" Class="rounded-start-0 rounded-end-4">
+        <MudContainer Class="mt-2">
+            <MudGrid>
+                <MudItem xs="12" sm="12" md="12" lg="12" xl="12">
+                    <MudPaper Elevation="0">
+                        <MudText Typo="Typo.h5" Class="mt-5 mb-1">@TL["Login"]</MudText>
+                        <MudAlert Severity="Severity.Error" Variant="Variant.Outlined" Class="mt-lg-5"
+                                  Hidden="@ErrorHidden">@ErrorText</MudAlert>
+                        <MudForm Action="/account/login" Method="post">
+                            <AntiforgeryToken/>
+                            <MudTextField T="string" Name="username" @bind-Value="@Username" Label="@TL["Username"]"
+                                          Class="mt-4"></MudTextField>
+                            <MudTextField T="string" Name="password" @bind-Value="@Password"
+                                          InputType="InputType.Password" Label="@TL["Password"]"
+                                          Class="mt-4 mb-5"></MudTextField>
+                            <div class="d-flex align-center mt-lg-5">
+                                <MudButton Variant="Variant.Filled" ButtonType="ButtonType.Submit"
+                                           Disabled="@LoginButtonDisabled">@TL["Login"]</MudButton>
+                                <MudCheckBox T="bool" Name="rememberme" Label="@TL["RememberMe"]"
+                                             Class="ms-3"></MudCheckBox>
+                            </div>
+                        </MudForm>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
+        </MudContainer>
+    </MudPaper>
+</MudContainer>
+
+@code {
+    private string? Username { get; set; }
+    private string? Password { get; set; }
+
+    private bool ErrorHidden
+    {
+        get => string.IsNullOrEmpty(ErrorText);
+    }
+
+    private bool LoginButtonDisabled
+    {
+        get => false;
+    }
+
+    private string LoginPaperStyle
+    {
+        get => $"background: linear-gradient(135deg, {Options.Value.LoginPage.GradientColorStart}, {Options.Value.LoginPage.GradientColorEnd});";
+    }
+
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "Error")]
+    public string? ErrorParameter { get; set; }
+
+    public string ErrorText
+    {
+        get => string.IsNullOrWhiteSpace(ErrorParameter) ? string.Empty : TL[ErrorParameter];
+    }
+
+}

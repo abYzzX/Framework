@@ -1,0 +1,72 @@
+﻿@using Microsoft.Extensions.Options
+@using Volo.Abp.Ui.Branding
+@inject IBrandingProvider BrandingProvider
+@inject IOptions<AbpMudBlazorUiOptions> Options
+@inherits LayoutComponentBase
+
+<MudThemeProvider Theme="_themeManager.Theme" @ref="@_themeProvider" @bind-IsDarkMode="@_isDarkMode"/>
+
+<MudLayout>
+    <AppBar IsDrawerOpen="@_drawerOpen" 
+            IsDarkModeChanged="ToggleDarkMode"
+            IsDarkModeEnabled="@_isDarkMode"
+            IsDrawerOpenChanged="ToggleDrawer"
+            IsThemeManagerOpen="@_themeManagerOpen"
+            IsThemeManagerOpenChanged="ToggleThemeManager"></AppBar>
+    <Drawer DarkModeToggled="ToggleDarkMode"
+            ThemeManagerToggled="ToggleThemeManager"
+            IsDrawerOpen="@_drawerOpen"
+            IsDarkMode="@_isDarkMode"
+            IsThemeManagerOpen="@_themeManagerOpen"></Drawer>
+    <MudMainContent>
+        @Body
+    </MudMainContent>
+    <MudThemeManager @bind-Open="@_themeManagerOpen" Theme="_themeManager" ThemeChanged="UpdateTheme"/>
+</MudLayout>
+
+@code{
+    private MudThemeProvider _themeProvider = new();
+    private ThemeManagerTheme _themeManager = new();
+    private bool _themeManagerOpen;
+    private bool _isDarkMode;
+    private bool _drawerOpen;
+
+    void ToggleDrawer(bool e)
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+
+    void ToggleThemeManager(bool e)
+    {
+        _themeManagerOpen = !_themeManagerOpen;
+    }
+
+    void UpdateTheme(ThemeManagerTheme value)
+    {
+        _themeManager = value;
+        StateHasChanged();
+    }
+
+    protected override void OnInitialized()
+    {
+        StateHasChanged();
+    }
+
+    void ToggleDarkMode(bool e)
+    {
+        _isDarkMode = !_isDarkMode;
+        StateHasChanged();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _isDarkMode = await _themeProvider.GetSystemPreference();
+            StateHasChanged();
+        }
+
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+}
